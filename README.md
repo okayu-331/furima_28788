@@ -74,6 +74,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :item
 - belongs_to :user
+- has_one :shipping
 
 
 ## shippings テーブル
@@ -86,7 +87,7 @@ Things you may want to cover:
 | address      | string     | null: false                    |
 | building     | string     |                                |
 | phone_number | integer    | null: false                    |
-| item         | references | null: false, foreign_key: true |
+| purchase     | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item
+- belongs_to :purchase
