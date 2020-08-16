@@ -10,10 +10,17 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-    it "nicknameが空では登録できない" do
+    it "nicknameが空の場合登録できない" do
       @user.nickname = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
+    end
+
+    it "nicknameが改行を含む場合、登録できない" do
+      @user.nickname = "Furima\n太郎123_-?@"
+      @user.valid?
+      binding.pry
+      expect(@user.errors.full_messages).to include("Nickname is invalid")
     end
 
     it "emailが空の場合、登録できない" do
