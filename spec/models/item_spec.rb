@@ -28,11 +28,12 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
-      it "imageがpng、jpg、gif以外の場合登録できない" do
-        @item.image = fixture_file_upload('public/images/test_image.pdf')
-        @item.valid?
-        expect(@item.errors.full_messages).to include("Image is invalid")
-      end
+      # View側で制限をかけたため、モデルにバリデーション実装無し。
+      # it "imageがpng、jpg、gif以外の場合登録できない" do
+      #   @item.image = fixture_file_upload('public/images/test_image.pdf')
+      #   @item.valid?
+      #   expect(@item.errors.full_messages).to include("Image is invalid")
+      # end
 
       it "nameが空の場合登録できない" do
         @item.name = nil
@@ -47,15 +48,15 @@ RSpec.describe Item, type: :model do
       end
 
       it "descriptionが空の場合登録できない" do
-        @item.desctription = nil
+        @item.description = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Discription can't be blank")
+        expect(@item.errors.full_messages).to include("Description can't be blank")
       end
 
       it "category_idが空の場合登録できない" do
         @item.category_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category id can't be blank")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it "statusが空の場合登録できない" do
@@ -67,19 +68,19 @@ RSpec.describe Item, type: :model do
       it "shipping_fee_idが空の場合登録できない" do
         @item.shipping_fee_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee id can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping fee can't be blank")
       end
 
       it "shipping_origin_idが空の場合登録できない" do
         @item.shipping_origin_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin id can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
       end
 
       it "shipping_days_idが空の場合登録できない" do
         @item.shipping_days_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping days id can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping days can't be blank")
       end
       
       it "priceが空の場合登録できない" do
@@ -91,25 +92,25 @@ RSpec.describe Item, type: :model do
       it "priceが300円未満の場合登録できない" do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include("Price out of setting range")
       end
 
       it "priceが10,000,000円以上の場合登録できない" do
         @item.price = 10000000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include("Price out of setting range")
       end
 
       it "priceが全角の場合登録できない" do
         @item.price = "５００"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include("Price positive number and half-width characters only")
       end
 
       it "priceが数字以外の場合登録できない" do
         @item.price = "abc"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is invalid")
+        expect(@item.errors.full_messages).to include("Price positive number and half-width characters only")
       end
     end
   end
