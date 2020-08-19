@@ -28,13 +28,6 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
-      # View側で制限をかけたため、モデルにバリデーション実装無し。
-      # it "imageがpng、jpg、gif以外の場合登録できない" do
-      #   @item.image = fixture_file_upload('public/images/test_image.pdf')
-      #   @item.valid?
-      #   expect(@item.errors.full_messages).to include("Image is invalid")
-      # end
-
       it "nameが空の場合登録できない" do
         @item.name = nil
         @item.valid?
