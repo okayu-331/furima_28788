@@ -189,6 +189,11 @@
   height: 50px;
   font-size: 14px;
   margin-bottom: 4vh;
+  cursor: pointer;
+}
+
+.sell-btn:hover {
+  opacity: 0.8;
 }
 
 .back-btn {
