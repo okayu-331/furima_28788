@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_index, only: :new
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.with_attached_image.includes(:purchase).order("created_at DESC")
   end
   
   def new
@@ -16,6 +16,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
