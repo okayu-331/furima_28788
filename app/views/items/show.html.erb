@@ -19,7 +19,8 @@
         <%= number_to_currency(@item.price, :unit => "￥", strip_insignificant_zeros: true) %>
       </span>
       <span class="item-postage">
-        (税込) 送料込み
+        <% if @item.shipping_fee.id == 1 %>(税込) 送料着払い<% end %>
+        <% if @item.shipping_fee.id == 2 %>(税込) 送料込み<% end %>
       </span>
     </div>
 
