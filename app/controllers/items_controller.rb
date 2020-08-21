@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, only: :new
+  before_action :set_item, only: [:show, :edit, :update]
+  before_action :move_to_signup, only: [:new, :edit]
 
   def index
     @items = Item.with_attached_image.includes(:purchase).order("created_at DESC")
@@ -19,7 +20,20 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def edit
+    if current_user.id != @item.user.id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   private
@@ -30,7 +44,11 @@ class ItemsController < ApplicationController
     ).merge(user_id: current_user.id)
   end
 
-  def move_to_index
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
+  def move_to_signup
     unless user_signed_in?
       redirect_to new_user_session_path
     end
