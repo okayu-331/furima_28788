@@ -65,9 +65,9 @@ RSpec.describe Item, type: :model do
       end
 
       it "shipping_origin_idが空の場合登録できない" do
-        @item.shipping_origin_id = nil
+        @item.prefecture_id = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping origin can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
       it "shipping_days_idが空の場合登録できない" do
