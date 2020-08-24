@@ -6,8 +6,8 @@ FactoryBot.define do
     address { "テスト町1-2ー３" }
     building { "テストビル1-2ー１０１" }
     phone_number { Faker::Number.leading_zero_number(digits: 11) }
-    purchase { 1 }
-    association :user
-    association :item
+    purchase_id { 1 }
+    # association :user
+    # association :item
   end
 end
