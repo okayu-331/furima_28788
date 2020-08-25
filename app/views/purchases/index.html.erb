@@ -13,7 +13,7 @@
           <%= @item.description %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'><%= @item.price %></p>
+          <p class='item-price-text'><%= number_to_currency(@item.price, :unit => "￥", strip_insignificant_zeros: true) %></p>
           <p class='item-price-sub-text'>
             <% if @item.shipping_fee.id == 1 %>(税込) 送料着払い<% end %>
             <% if @item.shipping_fee.id == 2 %>(税込) 送料込み<% end %>
@@ -29,7 +29,7 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= @item.price %>
+        <%= number_to_currency(@item.price, :unit => "￥", strip_insignificant_zeros: true) %>
       </p>
     </div>
     <%# /支払額の表示 %>
