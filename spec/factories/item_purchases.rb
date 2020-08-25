@@ -7,7 +7,6 @@ FactoryBot.define do
     building { "テストビル1-2ー１０１" }
     phone_number { Faker::Number.leading_zero_number(digits: 11) }
     purchase_id { 1 }
-    # association :user
-    # association :item
+    token { Faker::Alphanumeric.alphanumeric(number: 10) }
   end
 end
