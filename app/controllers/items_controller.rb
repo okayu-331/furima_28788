@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :move_to_signup, only: [:new, :edit]
 
   def index
-    @items = Item.with_attached_image.includes(:purchase).order("created_at DESC")
+    @items = Item.with_attached_image.includes(:purchase).order("created_at DESC").page params[:page]
   end
   
   def new
