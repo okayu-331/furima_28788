@@ -220,7 +220,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10vh 0;
+  padding: 10vh 0 5vh;
 }
 
 .item-contents>.title {
@@ -309,3 +309,30 @@ a {
 }
 
 /* //商品一覧 */
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  padding-bottom: 5vh;
+}
+.pagination>li {
+  padding: 5px 10px;
+  border: 1px solid #3ccace;
+}
+
+.pagination>li>a {
+  font-size: 18px;
+  color: #3ccace;
+}
+
+.pagination>.current {
+  background-color: #3ccace;
+  color: #fff;
+}
+
+// background-color: #3ccace;
+// color: #fff;
+
+/* //ページネーション */

@@ -152,7 +152,6 @@
             <% end %>
           </li>
         <% end %>
-        <%= paginate @items %>
       <% else %>
 
         <%# 商品がない場合のダミー %>
@@ -178,6 +177,7 @@
       <% end %>
     </ul>
   </div>
+  <%= paginate @items %>
   <%# //商品一覧 %>
 </div>
 <%= link_to new_item_path do %>
